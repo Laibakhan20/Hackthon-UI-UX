@@ -2,6 +2,7 @@ import Navbar1 from "./components/Navbar1";
 import Navbar from "./components/Navbar";
 import Header from "./components/Header";
 import Shopcard from "./components/Shopcard";
+import Bestproducts from "./components/Bestproducts";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <Navbar />
       <Header />
       <Shopcard />
+      <Bestproducts />
     </div>
     
   );
