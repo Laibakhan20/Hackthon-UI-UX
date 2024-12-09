@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Montserrat } from 'next/font/google'
+
+const montserrat = Montserrat({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-montserrat'
+})
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -24,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en"  className={montserrat.className}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
