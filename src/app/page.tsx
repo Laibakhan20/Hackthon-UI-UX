@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Header from "./components/Header";
 import Shopcard from "./components/Shopcard";
 import Bestproducts from "./components/Bestproducts";
+import Greenproduct from "./components/Greenproduct";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Header />
       <Shopcard />
       <Bestproducts />
+      <Greenproduct />
     </div>
     
   );
