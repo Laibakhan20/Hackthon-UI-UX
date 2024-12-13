@@ -1,16 +1,16 @@
 import {
-  Instagram,
-  Mail,
-  Phone,
-  Twitter,
-} from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+    Instagram,
+    Mail,
+    Phone,
+    Twitter,
+  } from "lucide-react";
+  import Image from "next/image";
+  import Link from "next/link";import React from 'react'
 
-const Navbar1 = () => {
+const Topnav = () => {
+    
   return (
-    <div className="xsmobile:hidden laptop:flex overflow-hidden  w-[1439px] h-[58px] bg-mynav px-0 py-[9px] flex items-center justify-between gap-[324px] mx-auto pl-16">
+    <div className="xsmobile:hidden laptop:flex overflow-hidden laptop:w-[1439px] h-[58px] bg-[#23856D] px-0 py-[9px] flex items-center justify-between gap-[324px] mx-auto pl-16">
       <div className="w-[1438px] h-[46px] flex items-center justify-between gap-0 opacity-100 px-4 pl-7 flex-row text-white text-center mx-auto">
         {/*col 1*/}
         <div className="gap-[10px] w-[415px] h-[46px] flex">
@@ -76,7 +76,7 @@ const Navbar1 = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Navbar1;
+export default Topnav

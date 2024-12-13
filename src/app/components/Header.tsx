@@ -4,7 +4,7 @@ import React from "react";
 
 const Header = () => {
   return (
-    <div className=" w-[412px] h-[753px] left-[1px] mx-auto flex justify-center items-center laptop:w-[1440px] desktop:h-[716px] desktop:left-0 bg-white mt-[470px] laptop:mt-0 desktop:transform-none desktop:top-0 text-white">
+    <div className=" w-[412px] h-[753px] left-[1px] mx-auto flex justify-center items-center laptop:w-[1440px] desktop:h-[716px] desktop:left-0 bg-white mt-[30px] laptop:mt-0 desktop:transform-none desktop:top-0 text-white">
       {/*desktop image*/}
       <div
         className="relative bg-cover bg-center w-[1440px] h-[716px] xsmobile:hidden laptop:flex object-contain object-center"
@@ -24,7 +24,7 @@ const Header = () => {
               <br />
               but things on a small scale.
             </h4>
-            <Link href={"/products"}>
+            <Link href={"/Shop"}>
               <Button className="w-[221px] h-[62px] gap-[10px] bg-[#2DC071]">
                 <h3 className="w-[141px] h-[32px] text-[24px] font-bold leading-[32px] tracking-[0.1px] text-center font-mon">
                   SHOP NOW
@@ -55,7 +55,7 @@ const Header = () => {
               will act, but things on a <br />
               small scale.
             </h4>
-            <Link href={"/products"}>
+            <Link href={"/Shop"}>
               <Button className="w-[221px] h-[62px] gap-[10px] bg-[#2DC071]">
                 <h3 className="w-[141px] h-[32px] text-[24px] font-bold leading-[32px] tracking-[0.1px] text-center font-mon">
                   SHOP NOW

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Montserrat } from 'next/font/google'
+import Navbar from "./components/Navbar";
 
 const montserrat = Montserrat({
   weight: '400',
@@ -36,7 +37,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        
         {children}
+        
       </body>
     </html>
   );

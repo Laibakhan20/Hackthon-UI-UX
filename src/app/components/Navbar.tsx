@@ -10,15 +10,22 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown, Heart, Search, User } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
+import { BiMenuAltRight } from "react-icons/bi";
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
   return (
-    <div className="w-[414px] h-[58px] top-[70px]  laptop:w-[1437px] laptop:px-[50px] laptop:py-0 laptop:gap-[324px] laptop:left-[38px] bg-white  mx-auto justify-center items-center flex pt-[30px]  px-[30px]">
+    <div className=" w-[414px] h-[58px] top-[70px]  laptop:w-[1437px] laptop:px-[50px] laptop:py-0 laptop:gap-[324px] laptop:left-[38px] bg-white  mx-auto justify-center items-center flex pt-[30px]  px-[30px] ">
       {/*for desktop ////////////////////////////*/}
       <div className="laptop:flex xsmobile:hidden flex-row">
         {/*logo*/}
         <div className="w-[187px] h-[58px] left-[38px]  py-[13px] gap-[10px] bg-white">
-          <h3 className="text-mynav w-[108px] h-[32px] top-[13px] gap-0 font-montserrat text-[24px] font-bold leading-[32px] tracking-[0.1px] text-left items-start">
+          <h3 className="text-mynav  w-[108px] h-[32px] top-[13px] gap-0 font-montserrat text-[24px] font-bold leading-[32px] tracking-[0.1px] text-left items-start">
             Bandage
           </h3>
         </div>
@@ -49,7 +56,7 @@ const Navbar = () => {
                   <DropdownMenuItem>Eastern</DropdownMenuItem>
                   <DropdownMenuItem>Western</DropdownMenuItem>
                   <DropdownMenuItem>Outer Wear</DropdownMenuItem>
-                  <DropdownMenuItem>Accessories</DropdownMenuItem>
+                  <DropdownMenuItem>Households</DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
@@ -137,19 +144,16 @@ const Navbar = () => {
             />
           </Link>
 
-          <Link href={"/"} className="">
-            <Image
-              src={"/Vector (4).png"}
-              alt="menu"
-              width={24}
-              height={13.71}
-              className="w-[24px] h-[26px] left-[0.57px] object-contain object-center"
-            />
-          </Link>
+          <button  className="bg-transparent w-[24px] h-[26px]" onClick={toggleMenu}
+          aria-label="Toggle Menu">
+            <BiMenuAltRight className="w-[24px] h-[26px]"/>           
+          </button>
         </div>
 
         {/*options*/}
-        <div className="absolute w-[400px] h-[474px] top-[300px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center ">
+        <div className={`${
+            menuOpen ? "block" : "hidden"
+          } absolute w-[400px] h-[474px] top-[300px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center z-50 bg-white`}>
           <div className="flex flex-col gap-[30px] mb-4">
             <Link
               href="/"
@@ -158,7 +162,7 @@ const Navbar = () => {
               Home
             </Link>
             <Link
-              href="/about"
+              href="/Productlist"
               className="font-mon text-[30px] font-normal leading-[45px] tracking-[0.2px] text-center text-mytextgray"
             >
               Product
@@ -183,3 +187,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+//<Image              src={"/Vector (4).png"}              alt="menu"             width={24}             height={13.71}             className="w-[24px] h-[26px] left-[0.57px] object-contain object-center z-50"           />
