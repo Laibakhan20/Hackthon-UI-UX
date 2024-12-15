@@ -71,4 +71,3 @@ const Header = () => {
 
 export default Header;
 
-//<Image src={"/carousel 1.png"} alt='image' width={1440} height={716} className='w-[1440px] h-[716px] xsmobile:hidden laptop:flex object-contain object-center'/>

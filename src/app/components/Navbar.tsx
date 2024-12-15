@@ -189,4 +189,3 @@ const Navbar = () => {
 export default Navbar;
 
 
-//<Image              src={"/Vector (4).png"}              alt="menu"             width={24}             height={13.71}             className="w-[24px] h-[26px] left-[0.57px] object-contain object-center z-50"           />

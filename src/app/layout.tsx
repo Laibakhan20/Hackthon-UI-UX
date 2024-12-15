@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Montserrat } from 'next/font/google'
-import Navbar from "./components/Navbar";
 
 const montserrat = Montserrat({
   weight: '400',

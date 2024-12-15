@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
-import { ChevronDown, Heart, Search, User } from "lucide-react";
-import Image from "next/image";
+import {  Heart, Search, User } from "lucide-react";
 import { useState } from "react";
 import { BiMenuAltRight } from "react-icons/bi";
 import { BsCart } from "react-icons/bs";

@@ -1,5 +1,4 @@
-import { Button } from '@/components/ui/button'
-import { Heading5, Instagram, Twitter } from 'lucide-react'
+import { Instagram, Twitter } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
@@ -48,7 +47,7 @@ const Footer = () => {
           <Link href={"/"} className="text-mytextgray hover:text-gray-800 font-mon text-[14px] font-bold leading-[24px] tracking-[0.2px] text-left underline-offset-auto">About Us</Link>
         </li>
         <li>
-        <Link href={"/"} className="text-mytextgray hover:text-gray-800 font-mon text-[14px] font-bold leading-[24px] tracking-[0.2px] text-left underline-offset-auto">Carrier</Link>
+        <Link href={"/"} className="text-mytextgzray hover:text-gray-800 font-mon text-[14px] font-bold leading-[24px] tracking-[0.2px] text-left underline-offset-auto">Carrier</Link>
         </li>
         <li>
         <Link href={"/"} className="text-mytextgray hover:text-gray-800 font-mon text-[14px] font-bold leading-[24px] tracking-[0.2px] text-left underline-offset-auto">We are hiring</Link>

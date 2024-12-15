@@ -31,8 +31,8 @@ const Blog = () => {
                             <p className='text-mytextgray text-[12px] leading-4 tracking-[0.2px] font-mon h-[16px] w-[28px]'>New</p>
                         </span>
                         <h4 className='w-[247px] h-[60px] font-mon text-[20px] font-normal leading-[30px] tracking-[0.2px] text-left text-mynav'>Loudest à la Madison #1<br/> 
-                        (L'integral)</h4>
-                        <p className='w-[280px] h-[60px] font-mon text-[14px] font-normal leading-[20px] tracking-[0.2px] text-left text-mytextgray'>We focus on ergonomics and meeting <br/>you where you work. It's only a <br/>keystroke away.</p>
+                        (L&apos;integral)</h4>
+                        <p className='w-[280px] h-[60px] font-mon text-[14px] font-normal leading-[20px] tracking-[0.2px] text-left text-mytextgray'>We focus on ergonomics and meeting <br/>you where you work. It&apos;s only a <br/>keystroke away.</p>
                         <div className='w-[298px] h-[46px] py-[15px] gap-0 justify-between flex'>
                             <span className='w-[98px] h-[16px] gap-[5px] flex'>
                             <AlarmClock color="#23A6F0" className='w-4 h-4' />
@@ -65,8 +65,8 @@ const Blog = () => {
                             <p className='text-mytextgray text-[12px] leading-4 tracking-[0.2px] font-mon h-[16px] w-[28px]'>New</p>
                         </span>
                         <h4 className='w-[247px] h-[60px] font-mon text-[20px] font-normal leading-[30px] tracking-[0.2px] text-left text-mynav'>Loudest à la Madison #1<br/> 
-                        (L'integral)</h4>
-                        <p className='w-[280px] h-[60px] font-mon text-[14px] font-normal leading-[20px] tracking-[0.2px] text-left text-mytextgray'>We focus on ergonomics and meeting <br/>you where you work. It's only a <br/>keystroke away.</p>
+                        (L&apos;integral)</h4>
+                        <p className='w-[280px] h-[60px] font-mon text-[14px] font-normal leading-[20px] tracking-[0.2px] text-left text-mytextgray'>We focus on ergonomics and meeting <br/>you where you work. It&apos;s only a <br/>keystroke away.</p>
                         <div className='w-[298px] h-[46px] py-[15px] gap-0 justify-between flex'>
                             <span className='w-[98px] h-[16px] gap-[5px] flex'>
                             <AlarmClock color="#23A6F0" className='w-4 h-4' />
@@ -99,8 +99,8 @@ const Blog = () => {
                             <p className='text-mytextgray text-[12px] leading-4 tracking-[0.2px] font-mon h-[16px] w-[28px]'>New</p>
                         </span>
                         <h4 className='w-[247px] h-[60px] font-mon text-[20px] font-normal leading-[30px] tracking-[0.2px] text-left text-mynav'>Loudest à la Madison #1<br/> 
-                        (L'integral)</h4>
-                        <p className='w-[280px] h-[60px] font-mon text-[14px] font-normal leading-[20px] tracking-[0.2px] text-left text-mytextgray'>We focus on ergonomics and meeting <br/>you where you work. It's only a <br/>keystroke away.</p>
+                        (L&apos;integral)</h4>
+                        <p className='w-[280px] h-[60px] font-mon text-[14px] font-normal leading-[20px] tracking-[0.2px] text-left text-mytextgray'>We focus on ergonomics and meeting <br/>you where you work. It&apos;s only a <br/>keystroke away.</p>
                         <div className='w-[298px] h-[46px] py-[15px] gap-0 justify-between flex'>
                             <span className='w-[98px] h-[16px] gap-[5px] flex'>
                             <AlarmClock color="#23A6F0" className='w-4 h-4' />
