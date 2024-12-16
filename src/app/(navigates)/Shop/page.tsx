@@ -2,7 +2,6 @@ import Mobilenav from '@/app/components/Mobilenav'
 import Navbar from '@/app/components/Navbar'
 import Productshop from '@/app/components/productList/Productshop'
 import Topnav from '@/app/components/productList/Topnav'
-import Footer from '@/app/components/Footer'
 import React from 'react'
 
 const Productlist = () => {
@@ -16,7 +15,6 @@ const Productlist = () => {
       <Mobilenav/>
       </div>
       <Productshop />
-      <Footer />
     </div>
   )
 }

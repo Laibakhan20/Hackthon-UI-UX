@@ -20,6 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Image from "next/image";
+import Footer from "@/app/components/Footer"
 
 
 const Productshop = () => {
@@ -295,7 +296,7 @@ const Productshop = () => {
               </div>
             </div>
 
-            <div className="w-[239px] h-[488px] bg-white laptop:block mobile:hidden">
+            <div className="w-[239px] h-[488px] bg-white laptop:block xsmobile:hidden">
               <Image src={"/product-cover-5 (9).png"} alt="product 1" height={300} width={239} className="w-[239px] h-[300px] object-contain object-center " />
               <div className="w-[239px] h-[188px] pt-[25px] pb-[35px] px-[25px] gap-[10px] items-center justify-center flex flex-col">
                 <h5 className="text-sm leading-6 text-mynav font-mon font-bold text-center tracking-widest">Graphic Design</h5>
@@ -317,7 +318,7 @@ const Productshop = () => {
               </div>
             </div>
 
-            <div className="w-[239px] h-[488px] bg-white laptop:block mobile:hidden">
+            <div className="w-[239px] h-[488px] bg-white laptop:block xsmobile:hidden">
               <Image src={"/product-cover-5 (11).png"} alt="product 1" height={300} width={239} className="w-[239px] h-[300px] object-contain object-center " />
               <div className="w-[239px] h-[188px] pt-[25px] pb-[35px] px-[25px] gap-[10px] items-center justify-center flex flex-col">
                 <h5 className="text-sm leading-6 text-mynav font-mon font-bold text-center tracking-widest">Graphic Design</h5>
@@ -339,7 +340,7 @@ const Productshop = () => {
               </div>
             </div>
 
-            <div className="w-[239px] h-[488px] bg-white laptop:block mobile:hidden">
+            <div className="w-[239px] h-[488px] bg-white laptop:block xsmobile:hidden">
               <Image src={"/product-cover-5 (12).png"} alt="product 1" height={300} width={239} className="w-[239px] h-[300px] object-contain object-center " />
               <div className="w-[239px] h-[188px] pt-[25px] pb-[35px] px-[25px] gap-[10px] items-center justify-center flex flex-col">
                 <h5 className="text-sm leading-6 text-mynav font-mon font-bold text-center tracking-widest">Graphic Design</h5>
@@ -361,7 +362,7 @@ const Productshop = () => {
               </div>
             </div>
 
-            <div className="w-[239px] h-[488px] bg-white laptop:block mobile:hidden">
+            <div className="w-[239px] h-[488px] bg-white laptop:block xsmobile:hidden">
               <Image src={"/product-cover-5 (13).png"} alt="product 1" height={300} width={239} className="w-[239px] h-[300px] object-contain object-center " />
               <div className="w-[239px] h-[188px] pt-[25px] pb-[35px] px-[25px] gap-[10px] items-center justify-center flex flex-col">
                 <h5 className="text-sm leading-6 text-mynav font-mon font-bold text-center tracking-widest">Graphic Design</h5>
@@ -383,7 +384,7 @@ const Productshop = () => {
               </div>
             </div>
 
-            <div className="w-[239px] h-[488px] bg-white laptop:block mobile:hidden">
+            <div className="w-[239px] h-[488px] bg-white laptop:block xsmobile:hidden">
               <Image src={"/product-cover-5 (14).png"} alt="product 1" height={300} width={239} className="w-[239px] h-[300px] object-contain object-center " />
               <div className="w-[239px] h-[188px] pt-[25px] pb-[35px] px-[25px] gap-[10px] items-center justify-center flex flex-col">
                 <h5 className="text-sm leading-6 text-mynav font-mon font-bold text-center tracking-widest">Graphic Design</h5>
@@ -405,7 +406,7 @@ const Productshop = () => {
               </div>
             </div>
 
-            <div className="w-[239px] h-[488px] bg-white laptop:block mobile:hidden">
+            <div className="w-[239px] h-[488px] bg-white laptop:block xsmobile:hidden">
               <Image src={"/product-cover-5 (15).png"} alt="product 1" height={300} width={239} className="w-[239px] h-[300px] object-contain object-center " />
               <div className="w-[239px] h-[188px] pt-[25px] pb-[35px] px-[25px] gap-[10px] items-center justify-center flex flex-col">
                 <h5 className="text-sm leading-6 text-mynav font-mon font-bold text-center tracking-widest">Graphic Design</h5>
@@ -427,7 +428,7 @@ const Productshop = () => {
               </div>
             </div>
 
-            <div className="w-[239px] h-[488px] bg-white laptop:block mobile:hidden">
+            <div className="w-[239px] h-[488px] bg-white laptop:block xsmobile:hidden">
               <Image src={"/product-cover-5 (16).png"} alt="product 1" height={300} width={239} className="w-[239px] h-[300px] object-contain object-center " />
               <div className="w-[239px] h-[188px] pt-[25px] pb-[35px] px-[25px] gap-[10px] items-center justify-center flex flex-col">
                 <h5 className="text-sm leading-6 text-mynav font-mon font-bold text-center tracking-widest">Graphic Design</h5>
@@ -449,7 +450,7 @@ const Productshop = () => {
               </div>
             </div>
 
-            <div className="w-[239px] h-[488px] bg-white laptop:block mobile:hidden">
+            <div className="w-[239px] h-[488px] bg-white laptop:block xsmobile:hidden">
               <Image src={"/product-cover-5 (17).png"} alt="product 1" height={300} width={239} className="w-[239px] h-[300px] object-contain object-center " />
               <div className="w-[239px] h-[188px] pt-[25px] pb-[35px] px-[25px] gap-[10px] items-center justify-center flex flex-col">
                 <h5 className="text-sm leading-6 text-mynav font-mon font-bold text-center tracking-widest">Graphic Design</h5>
@@ -524,8 +525,10 @@ const Productshop = () => {
         </div>
       </div>
 
+      
 
 
+      <Footer />
       
 
 
