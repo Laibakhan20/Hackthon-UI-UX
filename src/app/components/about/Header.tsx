@@ -14,7 +14,7 @@ const Header = () => {
   };
 
   return (
-    <div className="laptop:w-[1440px] laptop:h-[729px] laptop:gap-[40px] bg-white w-[414px] h-[1080px] gap-[0px] mx-auto">
+    <div className="laptop:w-[1280px] desktop:w-[1440px] laptop:h-[729px] laptop:gap-[40px] bg-white w-[414px] h-[1080px] gap-[0px] mx-auto">
       {/*navbar desktop*/}
       <div className="laptop:w-[1322px] laptop:h-[91px] laptop:flex xsmobile:hidden bg-white mx-auto flex  p-[16px_143px_16px_136px] items-center gap: [324px]">
         {/*logo*/}

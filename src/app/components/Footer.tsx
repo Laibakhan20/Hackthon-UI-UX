@@ -44,7 +44,7 @@ const Footer = () => {
       </h5>
       <nav className="list-none mb-10 w-[96px] h-[126px] gap-[10px] flex flex-col">
         <li>
-          <Link href={"/"} className="text-mytextgray hover:text-gray-800 font-mon text-[14px] font-bold leading-[24px] tracking-[0.2px] text-left underline-offset-auto">About Us</Link>
+          <Link href={"/About"} className="text-mytextgray hover:text-gray-800 font-mon text-[14px] font-bold leading-[24px] tracking-[0.2px] text-left underline-offset-auto">About Us</Link>
         </li>
         <li>
         <Link href={"/"} className="text-mytextgzray hover:text-gray-800 font-mon text-[14px] font-bold leading-[24px] tracking-[0.2px] text-left underline-offset-auto">Carrier</Link>
@@ -64,7 +64,7 @@ const Footer = () => {
       </h5>
       <nav className="list-none mb-10 w-[96px] h-[126px] gap-[10px] flex flex-col">
         <li>
-          <Link href={"/"} className="text-mytextgray hover:text-gray-800 font-mon text-[14px] font-bold leading-[24px] tracking-[0.2px] text-left underline-offset-auto">About Us</Link>
+          <Link href={"/About"} className="text-mytextgray hover:text-gray-800 font-mon text-[14px] font-bold leading-[24px] tracking-[0.2px] text-left underline-offset-auto">About Us</Link>
         </li>
         <li>
         <Link href={"/"} className="text-mytextgray hover:text-gray-800 font-mon text-[14px] font-bold leading-[24px] tracking-[0.2px] text-left underline-offset-auto">Carrier</Link>
