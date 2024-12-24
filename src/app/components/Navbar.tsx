@@ -162,13 +162,13 @@ const Navbar = () => {
               Home
             </Link>
             <Link
-              href="/Productlist"
+              href="/Shop"
               className="font-mon text-[30px] font-normal leading-[45px] tracking-[0.2px] text-center text-mytextgray"
             >
               Product
             </Link>
             <Link
-              href="/services"
+              href="/"
               className="font-mon text-[30px] font-normal leading-[45px] tracking-[0.2px] text-center text-mytextgray"
             >
               Pricing

@@ -13,10 +13,10 @@ const Mobilenav = () => {
     setMenuOpen(!menuOpen);
   };
   return (
-    <div className="w-[414px] h-[58px] top-[70px] bg-white  mx-auto justify-center items-center flex pt-[30px] ">
+    <div className="w-[414px] h-[58px] top-[70px] bg-white mx-auto justify-center items-center flex pt-[30px]  px-[30px]">
         {/* for mobile ////////////////////////////*/}
-      <div className="laptop:hidden xsmobile:flex  mx-auto items-center justify-between flex ">
-        <div className="w-[187px] h-[58px] top-[23px] left-[35px] py-[13px] pr-[79px] gap-[10px] flex px-[30px]">
+      <div className="laptop:hidden xsmobile:flex   overflow-hidden mx-auto items-center justify-between flex">
+        <div className="w-[187px] h-[58px] top-[23px] left-[35px] py-[13px] pr-[79px] gap-[10px] flex">
           {/*logo*/}
           <h3 className="w-[108px] h-[32px] top-[13px] gap-0 font-mon text-[24px] font-bold leading-[32px] tracking-[0.1px] text-left">
             Bandage
@@ -44,7 +44,7 @@ const Mobilenav = () => {
               Home
             </Link>
             <Link
-              href="/Productlist"
+              href="/Shop"
               className="font-mon text-[30px] font-normal leading-[45px] tracking-[0.2px] text-center text-mytextgray"
             >
               Shop
@@ -68,7 +68,7 @@ const Mobilenav = () => {
               Contact
             </Link>
             <Link
-              href="/contact"
+              href="/About"
               className="font-mon text-[30px] font-normal leading-[45px] tracking-[0.2px] text-center text-mytextgray"
             >
               Pages

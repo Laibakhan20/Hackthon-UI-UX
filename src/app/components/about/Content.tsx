@@ -3,10 +3,12 @@ import { Instagram, Play, Twitter } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 import { FaFacebook } from "react-icons/fa";
+import Testimonial from "./Testimonial";
 
 const Content = () => {
   return (
     <div className="laptop:w-[1280px] desktop:w-[1440px] bg-white w-[414px] mx-auto">
+
       {/*section 1: problems trying*/}
       <section className="w-[414px] h-[500px] xsmobile:px-[16.5px] laptop:px-[0px] laptop:w-[1440px] laptop:h-[236px] laptop:gap-[40px] bg-white mx-auto justify-center items-center overflow-hidden">
         {/*container*/}
@@ -204,6 +206,43 @@ const Content = () => {
           </div>
         </div>
       </div>
+
+      {/*Section 5 : Clients*/}
+      <div className="w-[414px] h-[1444px] laptop:w-[1440px] laptop:h-[479px] bg-mywhite">
+      {/*container*/}
+      <div className="flex flex-col items-center gap-[40px] w-[410px] h-[1192px] pt-[120px] pb-[132px] px-[4px] laptop:w-[1050px] laptop:h-[479px] laptop:pt-[80px] laptop:pb-[80px] laptop:px-[195px] laptop:gap-[24px]  mx-auto">
+
+        {/*row 1*/}
+        <div className="w-[325px] h-[240px] laptop:w-[864px] laptop:h-[120px]  gap-[30px] flex flex-col items-center">
+          <h2 className="font-mon text-[40px] font-bold leading-[50px] tracking-[0.2px] text-left text-mynav ">Big Companies Are Here</h2>
+          <p className="font-mon text-[14px] font-normal leading-[20px] tracking-[0.2px] text-center text-mytextgray ">Problems trying to resolve the conflict between<br/> 
+          the two major realms of Classical physics: Newtonian mechanics </p>
+
+        </div>
+
+        {/*row 2*/}
+        
+        <div className="w-[327px] h-auto pt-[50px] pb-[50px] gap-[60px] laptop:w-[1054px] laptop:h-[175px] laptop:pt-[50px] laptop:pb-[50px] laptop:gap-[30px]  justify-center grid xsmobile:grid-rows-6 xsmobile:grid-cols-1 laptop:grid-rows-1 laptop:grid-cols-6 items-center">
+         
+                     <Image src={"/Vector (6).png"} alt="hooli" width={102.99} height={33.81} className="w-[102.99px] h-[33.81px] object-contain object-center mx-auto" />
+                     <Image src={"/Vector (7).png"} alt="hooli" width={83} height={58.96} className="w-[83px] h-[58.96px] object-contain object-center mx-auto" />
+                     <Image src={"/Vector (8).png"} alt="hooli" width={102} height={74.84} className="w-[102px] h-[74.84px] object-contain object-center mx-auto" />
+                     <Image src={"/Vector (9).png"} alt="hooli" width={102.98} height={41.98} className="w-[102.98px] h-[41.98px] object-contain object-center mx-auto" />
+                     <Image src={"/Vector (10).png"} alt="hooli" width={103.68} height={61.75} className="w-[103.68px] h-[61.75px] object-contain object-center mx-auto" />
+                     <Image src={"/Vector (11).png"} alt="hooli" width={75.75} height={71.86} className="w-[75.75px] h-[71.86px] object-contain object-center mx-auto" />
+                      
+                 
+        </div>
+      </div>
+      </div>
+
+      {/*Section 5*/}
+      <Testimonial />
+
+
+
+
+
     </div>
   );
 };
