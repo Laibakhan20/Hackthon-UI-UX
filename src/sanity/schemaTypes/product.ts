@@ -44,6 +44,11 @@ export const product = defineType({
             name:"isNew",
             type:"boolean",
             title:"New Badge",
+        },
+        {
+            name:"isAvailable",
+            type:"boolean",
+            title:"Available",
         }
     ]
 })

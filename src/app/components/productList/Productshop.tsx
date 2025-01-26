@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -21,9 +22,25 @@ import {
 } from "@/components/ui/select";
 import Image from "next/image";
 import Footer from "@/app/components/Footer"
+import { Product } from "@/interface";
+import { allProducts } from "@/sanity/lib/queries";
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
 
 
 const Productshop = () => {
+
+  const [product, setProduct] = useState<Product[]>([])
+
+  useEffect(()=>{
+    async function fetchproducts(){
+      const fetchedproduct : Product[] = await client.fetch(allProducts)
+      setProduct(fetchedproduct)
+    }
+    fetchproducts()
+  },[])
+
+
   return (
     <div className="laptop:w-[1440px] xsmobile:w-[414px] mx-auto mt-7 laptop:mt-0">
 
@@ -76,7 +93,7 @@ const Productshop = () => {
           <div className="grid xsmobile:grid-rows-5 xsmobile:grid-cols-1 laptop:grid-rows-1 laptop:grid-cols-5  w-[333px] h-[1609px] laptop:w-[1088px] laptop:h-[223px] gap-[15px]  ">
             <div className="bg-[url('/card-cover-5.jpg')] bg-contain bg-center bg-no-repeat flex items-center justify-center flex-col">
               <h5 className="text-white w-[67px] h-[24px] top-[87px] left-[70px] text-center font-mon font-bold text-[16px] leading-[24px] tracking-[0.1px]">
-                CLOTHS
+                HOME
               </h5>
               <p className="text-white w-[67px] h-[24px] top-[87px] left-[70px] text-center font-mon font-normal text-[14px] leading-[20px] tracking-[0.2px] mt-2">
                 5 Items
@@ -84,7 +101,7 @@ const Productshop = () => {
             </div>
             <div className="bg-[url('/card-cover-6.jpg')] bg-contain bg-center bg-no-repeat flex items-center justify-center flex-col">
               <h5 className="text-white w-[67px] h-[24px] top-[87px] left-[70px] text-center font-mon font-bold text-[16px] leading-[24px] tracking-[0.1px]">
-                CLOTHS
+                HOME
               </h5>
               <p className="text-white w-[67px] h-[24px] top-[87px] left-[70px] text-center font-mon font-normal text-[14px] leading-[20px] tracking-[0.2px] mt-2">
                 5 Items
@@ -201,24 +218,40 @@ const Productshop = () => {
 
 
       {/*SECION 5////////////////////////////*/}
-      <div className="w-[414px] h-[2832px] px-[43px] laptop:w-[1440px] laptop:h-[1778px] laptop:px-[158px] gap-[0px] ">
+      <div className="w-[414px] h-full px-[43px] laptop:w-[1440px] laptop:px-[158px] gap-[0px] ">
 
         {/*container*/}
-        <div className="w-[328px] h-[2832px] left-[43px] py-[80px] gap-[48px] laptop:w-[1124px] laptop:h-[1778px] laptop:left-[158px] laptop:py-[48px] bg-white flex justify-center flex-col items-center">
+        <div className="w-[328px] left-[43px] py-[80px] gap-[48px] laptop:w-[1124px] h-full laptop:left-[158px] laptop:py-[48px] bg-white flex justify-center flex-col items-center">
 
-          <div className="grid laptop:grid-rows-3 laptop:grid-cols-4 xsmobile:grid-rows-4 grid-cols-1 w-[328px] h-[2550px] gap-[30px] laptop:w-[1124px] laptop:h-[1464px] ">
-
-            <div className="w-[328px] h-[615px] laptop:w-[239px] laptop:h-[488px] bg-white">
-              <Image src={"/filter (4).png"} alt="product 1" height={300} width={239} className="w-[328px] h-[427px]  laptop:w-[239px] laptop:h-[300px] object-contain object-center " />
-              <div className="w-[328px] laptop:w-[239px] h-[188px] pt-[25px] pb-[35px] px-[25px] gap-[10px] items-center justify-center flex flex-col">
-                <h5 className="text-sm leading-6 text-mynav font-mon font-bold text-center tracking-widest">Graphic Design</h5>
-                <p className="text-sm leading-6 text-mytextgray font-mon font-bold text-center tracking-widest">English Department</p>
-                <span className="inline-flex w-[108px] h-[34px] py-[5px] px-[3px] gap-[5px] items-center justify-center">
-                <h5 className="w-[52px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#BDBDBD] font-mon">
-                  $16.48
+          <div className="grid laptop:grid-rows laptop:grid-cols-4 xsmobile:grid-rows grid-cols-1 w-[328px] h-full gap-[30px] laptop:w-[1124px] laptop:h-full ">
+            {product.map((product) => (
+              <div key={product._id} className="w-[328px] h-full">
+              {/*card*/}
+            <div className="w-[328px] h-[615px] laptop:w-[239px] laptop:h-[488px] bg-white hover:bg-slate-200">
+              {product.productImage && (
+                <Image 
+                src={urlFor(product.productImage).url()} 
+                alt={product.title} 
+                height={300} 
+                width={239} 
+                className="w-[328px] h-[427px]  laptop:w-[239px] laptop:h-[300px] object-center object-fill " 
+                />
+              )}
+          
+              <div className="w-[328px] laptop:w-[239px] h-[188px] pt-[25px] pb-[35px] px-[25px] gap-[8px] items-center justify-center flex flex-col">
+                <h5 className="text-sm leading-6 text-mynav font-mon font-bold text-center tracking-widest">
+                  {product.title}
                 </h5>
+                <p className="text-sm leading-6 text-mytextgray font-mon font-bold text-center tracking-widest">Home</p>
+                <p className="text-red-500 font-semibold font-mon text-sm">{product.dicountPercentage}% off</p>
+                <span className="inline-flex w-[108px] h-[34px] py-[5px] px-[3px] gap-[6px] items-center justify-center">
+                {product.dicountPercentage !== undefined && (
+                <h5 className="w-[52px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#BDBDBD] font-mon line-through">
+                 ${(product.price / (1 - (product.dicountPercentage) / 100)).toFixed(2)}
+                     </h5>
+                   )}
                 <h5 className="w-[45px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#23856D] font-[Montserrat]">
-                  $6.48
+                ${product.price}
                 </h5>
               </span>
               <span className="inline-flex items-center w-auto h-[16px] gap-[6.08px]">
@@ -230,247 +263,10 @@ const Productshop = () => {
               </div>
             </div>
 
-            <div className="w-[328px] h-[615px] laptop:w-[239px] laptop:h-[488px] bg-white">
-              <Image src={"/filter (5).png"} alt="product 1" height={300} width={239} className="w-[328px] h-[427px]  laptop:w-[239px] laptop:h-[300px]  object-contain object-center " />
-              <div className="w-[328px] laptop:w-[239px] h-[188px] pt-[25px] pb-[35px] px-[25px] gap-[10px] items-center justify-center flex flex-col">
-                <h5 className="text-sm leading-6 text-mynav font-mon font-bold text-center tracking-widest">Graphic Design</h5>
-                <p className="text-sm leading-6 text-mytextgray font-mon font-bold text-center tracking-widest">English Department</p>
-                <span className="inline-flex w-[108px] h-[34px] py-[5px] px-[3px] gap-[5px] items-center justify-center">
-                <h5 className="w-[52px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#BDBDBD] font-mon">
-                  $16.48
-                </h5>
-                <h5 className="w-[45px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#23856D] font-[Montserrat]">
-                  $6.48
-                </h5>
-              </span>
-              <span className="inline-flex items-center w-auto h-[16px] gap-[6.08px]">
-                <div className="w-[16px] h-[16px] gap-0 bg-myblue rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#23856D] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#E77C40] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#252B42] rounded-full"></div>
-              </span>
-              </div>
             </div>
+            ))}
 
-            <div className="w-[328px] h-[615px] laptop:w-[239px] laptop:h-[488px] bg-white">
-              <Image src={"/product-cover-5 (8).png"} alt="product 1" height={300} width={239} className="w-[328px] h-[427px]  laptop:w-[239px] laptop:h-[300px] object-contain object-center " />
-              <div className="w-[328px] laptop:w-[239px] h-[188px] pt-[25px] pb-[35px] px-[25px] gap-[10px] items-center justify-center flex flex-col">
-                <h5 className="text-sm leading-6 text-mynav font-mon font-bold text-center tracking-widest">Graphic Design</h5>
-                <p className="text-sm leading-6 text-mytextgray font-mon font-bold text-center tracking-widest">English Department</p>
-                <span className="inline-flex w-[108px] h-[34px] py-[5px] px-[3px] gap-[5px] items-center justify-center">
-                <h5 className="w-[52px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#BDBDBD] font-mon">
-                  $16.48
-                </h5>
-                <h5 className="w-[45px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#23856D] font-[Montserrat]">
-                  $6.48
-                </h5>
-              </span>
-              <span className="inline-flex items-center w-auto h-[16px] gap-[6.08px]">
-                <div className="w-[16px] h-[16px] gap-0 bg-myblue rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#23856D] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#E77C40] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#252B42] rounded-full"></div>
-              </span>
-              </div>
-            </div>
-
-            <div className="w-[328px] h-[615px] laptop:w-[239px] laptop:h-[488px] bg-white">
-              <Image src={"/product-cover-5 (10).png"} alt="product 1" height={300} width={239} className="w-[328px] h-[427px]  laptop:w-[239px] laptop:h-[300px] object-contain object-center " />
-              <div className="w-[328px] laptop:w-[239px] h-[188px] pt-[25px] pb-[35px] px-[25px] gap-[10px] items-center justify-center flex flex-col">
-                <h5 className="text-sm leading-6 text-mynav font-mon font-bold text-center tracking-widest">Graphic Design</h5>
-                <p className="text-sm leading-6 text-mytextgray font-mon font-bold text-center tracking-widest">English Department</p>
-                <span className="inline-flex w-[108px] h-[34px] py-[5px] px-[3px] gap-[5px] items-center justify-center">
-                <h5 className="w-[52px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#BDBDBD] font-mon">
-                  $16.48
-                </h5>
-                <h5 className="w-[45px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#23856D] font-[Montserrat]">
-                  $6.48
-                </h5>
-              </span>
-              <span className="inline-flex items-center w-auto h-[16px] gap-[6.08px]">
-                <div className="w-[16px] h-[16px] gap-0 bg-myblue rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#23856D] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#E77C40] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#252B42] rounded-full"></div>
-              </span>
-              </div>
-            </div>
-
-            <div className="w-[239px] h-[488px] bg-white laptop:block xsmobile:hidden">
-              <Image src={"/product-cover-5 (9).png"} alt="product 1" height={300} width={239} className="w-[239px] h-[300px] object-contain object-center " />
-              <div className="w-[239px] h-[188px] pt-[25px] pb-[35px] px-[25px] gap-[10px] items-center justify-center flex flex-col">
-                <h5 className="text-sm leading-6 text-mynav font-mon font-bold text-center tracking-widest">Graphic Design</h5>
-                <p className="text-sm leading-6 text-mytextgray font-mon font-bold text-center tracking-widest">English Department</p>
-                <span className="inline-flex w-[108px] h-[34px] py-[5px] px-[3px] gap-[5px] items-center justify-center">
-                <h5 className="w-[52px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#BDBDBD] font-mon">
-                  $16.48
-                </h5>
-                <h5 className="w-[45px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#23856D] font-[Montserrat]">
-                  $6.48
-                </h5>
-              </span>
-              <span className="inline-flex items-center w-auto h-[16px] gap-[6.08px]">
-                <div className="w-[16px] h-[16px] gap-0 bg-myblue rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#23856D] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#E77C40] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#252B42] rounded-full"></div>
-              </span>
-              </div>
-            </div>
-
-            <div className="w-[239px] h-[488px] bg-white laptop:block xsmobile:hidden">
-              <Image src={"/product-cover-5 (11).png"} alt="product 1" height={300} width={239} className="w-[239px] h-[300px] object-contain object-center " />
-              <div className="w-[239px] h-[188px] pt-[25px] pb-[35px] px-[25px] gap-[10px] items-center justify-center flex flex-col">
-                <h5 className="text-sm leading-6 text-mynav font-mon font-bold text-center tracking-widest">Graphic Design</h5>
-                <p className="text-sm leading-6 text-mytextgray font-mon font-bold text-center tracking-widest">English Department</p>
-                <span className="inline-flex w-[108px] h-[34px] py-[5px] px-[3px] gap-[5px] items-center justify-center">
-                <h5 className="w-[52px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#BDBDBD] font-mon">
-                  $16.48
-                </h5>
-                <h5 className="w-[45px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#23856D] font-[Montserrat]">
-                  $6.48
-                </h5>
-              </span>
-              <span className="inline-flex items-center w-auto h-[16px] gap-[6.08px]">
-                <div className="w-[16px] h-[16px] gap-0 bg-myblue rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#23856D] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#E77C40] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#252B42] rounded-full"></div>
-              </span>
-              </div>
-            </div>
-
-            <div className="w-[239px] h-[488px] bg-white laptop:block xsmobile:hidden">
-              <Image src={"/product-cover-5 (12).png"} alt="product 1" height={300} width={239} className="w-[239px] h-[300px] object-contain object-center " />
-              <div className="w-[239px] h-[188px] pt-[25px] pb-[35px] px-[25px] gap-[10px] items-center justify-center flex flex-col">
-                <h5 className="text-sm leading-6 text-mynav font-mon font-bold text-center tracking-widest">Graphic Design</h5>
-                <p className="text-sm leading-6 text-mytextgray font-mon font-bold text-center tracking-widest">English Department</p>
-                <span className="inline-flex w-[108px] h-[34px] py-[5px] px-[3px] gap-[5px] items-center justify-center">
-                <h5 className="w-[52px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#BDBDBD] font-mon">
-                  $16.48
-                </h5>
-                <h5 className="w-[45px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#23856D] font-[Montserrat]">
-                  $6.48
-                </h5>
-              </span>
-              <span className="inline-flex items-center w-auto h-[16px] gap-[6.08px]">
-                <div className="w-[16px] h-[16px] gap-0 bg-myblue rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#23856D] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#E77C40] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#252B42] rounded-full"></div>
-              </span>
-              </div>
-            </div>
-
-            <div className="w-[239px] h-[488px] bg-white laptop:block xsmobile:hidden">
-              <Image src={"/product-cover-5 (13).png"} alt="product 1" height={300} width={239} className="w-[239px] h-[300px] object-contain object-center " />
-              <div className="w-[239px] h-[188px] pt-[25px] pb-[35px] px-[25px] gap-[10px] items-center justify-center flex flex-col">
-                <h5 className="text-sm leading-6 text-mynav font-mon font-bold text-center tracking-widest">Graphic Design</h5>
-                <p className="text-sm leading-6 text-mytextgray font-mon font-bold text-center tracking-widest">English Department</p>
-                <span className="inline-flex w-[108px] h-[34px] py-[5px] px-[3px] gap-[5px] items-center justify-center">
-                <h5 className="w-[52px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#BDBDBD] font-mon">
-                  $16.48
-                </h5>
-                <h5 className="w-[45px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#23856D] font-[Montserrat]">
-                  $6.48
-                </h5>
-              </span>
-              <span className="inline-flex items-center w-auto h-[16px] gap-[6.08px]">
-                <div className="w-[16px] h-[16px] gap-0 bg-myblue rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#23856D] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#E77C40] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#252B42] rounded-full"></div>
-              </span>
-              </div>
-            </div>
-
-            <div className="w-[239px] h-[488px] bg-white laptop:block xsmobile:hidden">
-              <Image src={"/product-cover-5 (14).png"} alt="product 1" height={300} width={239} className="w-[239px] h-[300px] object-contain object-center " />
-              <div className="w-[239px] h-[188px] pt-[25px] pb-[35px] px-[25px] gap-[10px] items-center justify-center flex flex-col">
-                <h5 className="text-sm leading-6 text-mynav font-mon font-bold text-center tracking-widest">Graphic Design</h5>
-                <p className="text-sm leading-6 text-mytextgray font-mon font-bold text-center tracking-widest">English Department</p>
-                <span className="inline-flex w-[108px] h-[34px] py-[5px] px-[3px] gap-[5px] items-center justify-center">
-                <h5 className="w-[52px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#BDBDBD] font-mon">
-                  $16.48
-                </h5>
-                <h5 className="w-[45px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#23856D] font-[Montserrat]">
-                  $6.48
-                </h5>
-              </span>
-              <span className="inline-flex items-center w-auto h-[16px] gap-[6.08px]">
-                <div className="w-[16px] h-[16px] gap-0 bg-myblue rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#23856D] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#E77C40] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#252B42] rounded-full"></div>
-              </span>
-              </div>
-            </div>
-
-            <div className="w-[239px] h-[488px] bg-white laptop:block xsmobile:hidden">
-              <Image src={"/product-cover-5 (15).png"} alt="product 1" height={300} width={239} className="w-[239px] h-[300px] object-contain object-center " />
-              <div className="w-[239px] h-[188px] pt-[25px] pb-[35px] px-[25px] gap-[10px] items-center justify-center flex flex-col">
-                <h5 className="text-sm leading-6 text-mynav font-mon font-bold text-center tracking-widest">Graphic Design</h5>
-                <p className="text-sm leading-6 text-mytextgray font-mon font-bold text-center tracking-widest">English Department</p>
-                <span className="inline-flex w-[108px] h-[34px] py-[5px] px-[3px] gap-[5px] items-center justify-center">
-                <h5 className="w-[52px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#BDBDBD] font-mon">
-                  $16.48
-                </h5>
-                <h5 className="w-[45px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#23856D] font-[Montserrat]">
-                  $6.48
-                </h5>
-              </span>
-              <span className="inline-flex items-center w-auto h-[16px] gap-[6.08px]">
-                <div className="w-[16px] h-[16px] gap-0 bg-myblue rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#23856D] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#E77C40] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#252B42] rounded-full"></div>
-              </span>
-              </div>
-            </div>
-
-            <div className="w-[239px] h-[488px] bg-white laptop:block xsmobile:hidden">
-              <Image src={"/product-cover-5 (16).png"} alt="product 1" height={300} width={239} className="w-[239px] h-[300px] object-contain object-center " />
-              <div className="w-[239px] h-[188px] pt-[25px] pb-[35px] px-[25px] gap-[10px] items-center justify-center flex flex-col">
-                <h5 className="text-sm leading-6 text-mynav font-mon font-bold text-center tracking-widest">Graphic Design</h5>
-                <p className="text-sm leading-6 text-mytextgray font-mon font-bold text-center tracking-widest">English Department</p>
-                <span className="inline-flex w-[108px] h-[34px] py-[5px] px-[3px] gap-[5px] items-center justify-center">
-                <h5 className="w-[52px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#BDBDBD] font-mon">
-                  $16.48
-                </h5>
-                <h5 className="w-[45px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#23856D] font-[Montserrat]">
-                  $6.48
-                </h5>
-              </span>
-              <span className="inline-flex items-center w-auto h-[16px] gap-[6.08px]">
-                <div className="w-[16px] h-[16px] gap-0 bg-myblue rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#23856D] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#E77C40] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#252B42] rounded-full"></div>
-              </span>
-              </div>
-            </div>
-
-            <div className="w-[239px] h-[488px] bg-white laptop:block xsmobile:hidden">
-              <Image src={"/product-cover-5 (17).png"} alt="product 1" height={300} width={239} className="w-[239px] h-[300px] object-contain object-center " />
-              <div className="w-[239px] h-[188px] pt-[25px] pb-[35px] px-[25px] gap-[10px] items-center justify-center flex flex-col">
-                <h5 className="text-sm leading-6 text-mynav font-mon font-bold text-center tracking-widest">Graphic Design</h5>
-                <p className="text-sm leading-6 text-mytextgray font-mon font-bold text-center tracking-widest">English Department</p>
-                <span className="inline-flex w-[108px] h-[34px] py-[5px] px-[3px] gap-[5px] items-center justify-center">
-                <h5 className="w-[52px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#BDBDBD] font-mon">
-                  $16.48
-                </h5>
-                <h5 className="w-[45px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#23856D] font-[Montserrat]">
-                  $6.48
-                </h5>
-              </span>
-              <span className="inline-flex items-center w-auto h-[16px] gap-[6.08px]">
-                <div className="w-[16px] h-[16px] gap-0 bg-myblue rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#23856D] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#E77C40] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#252B42] rounded-full"></div>
-              </span>
-              </div>
-            </div>
+          
 
           </div>
 
