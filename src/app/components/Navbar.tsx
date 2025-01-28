@@ -20,13 +20,13 @@ const Navbar = () => {
     setMenuOpen(!menuOpen);
   };
   return (
-    <div className=" w-[414px] h-[58px] top-[70px]  laptop:w-[1437px] laptop:px-[50px] laptop:py-0 laptop:gap-[324px] laptop:left-[38px] bg-white  mx-auto justify-center items-center flex pt-[30px]  px-[30px] ">
+    <div className=" w-[414px] h-[58px] top-[70px] laptop:w-full  desktop:w-[1437px] laptop:px-[25px] laptop:py-0 laptop:gap-[324px] laptop:left-[10px] bg-white  mx-auto justify-center items-center flex pt-[30px]  px-[30px] ">
       {/*for desktop ////////////////////////////*/}
-      <div className="laptop:flex xsmobile:hidden flex-row">
+      <div className="container laptop:flex xsmobile:hidden flex-row mx-auto">
         {/*logo*/}
         <div className="w-[187px] h-[58px] left-[38px]  py-[13px] gap-[10px] bg-white">
           <h3 className="text-mynav  w-[108px] h-[32px] top-[13px] gap-0 font-montserrat text-[24px] font-bold leading-[32px] tracking-[0.1px] text-left items-start">
-            Bandage
+            CasaEncanto
           </h3>
         </div>
         {/*menu*/}
@@ -126,7 +126,7 @@ const Navbar = () => {
         <div className="w-[187px] h-[58px] top-[23px] left-[35px] py-[13px] pr-[79px] gap-[10px] flex">
           {/*logo*/}
           <h3 className="w-[108px] h-[32px] top-[13px] gap-0 font-mon text-[24px] font-bold leading-[32px] tracking-[0.1px] text-left">
-            Bandage
+            CasaEncanto
           </h3>
         </div>
 

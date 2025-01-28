@@ -160,7 +160,7 @@ const Footer = () => {
             <div className='w-[414px] h-[98px] py-[25px] gap-[40px] laptop:w-[1050px] laptop:h-[74px] laptop:left-[195px] laptop:py-[25px] laptop:gap-0 mx-auto'>
                 {/*row*/}
                 <div className='w-[413px] h-[48px] gap-[213px] laptop:w-[600px] laptop:h-[24px] flex'>
-                    <h6 className='xsmobile:mx-auto laptop:mx-0 flex font-mon text-[14px] leading-[24px] tracking-[0.2px] font-bold xsmobile:text-center laptop:text-left text-mytextgray'>Made With Love By<br className='xsmobile:flex laptop:hidden'/> Finland All Right Reserved </h6>
+                    <h6 className='xsmobile:mx-auto laptop:mx-0 flex font-mon text-[14px] leading-[24px] tracking-[0.2px] font-bold xsmobile:text-center laptop:text-left text-mytextgray'>Developed By<br className='xsmobile:flex laptop:hidden'/> Laiba Khan. All Rights Reserved </h6>
                 </div>
             </div>
         </div>

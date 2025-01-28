@@ -31,14 +31,26 @@ import { urlFor } from "@/sanity/lib/image";
 const Productshop = () => {
 
   const [product, setProduct] = useState<Product[]>([])
+  const [loading, setLoading] = useState(true);
+
 
   useEffect(()=>{
     async function fetchproducts(){
+      try {
       const fetchedproduct : Product[] = await client.fetch(allProducts)
       setProduct(fetchedproduct)
     }
-    fetchproducts()
+    catch (error) {
+      console.error("Error fetching products:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+    fetchproducts();
   },[])
+
+  if (loading) return <p>Loading products...</p>;
+
 
 
   return (

@@ -19,7 +19,7 @@ const Mobilenav = () => {
         <div className="w-[187px] h-[58px] top-[23px] left-[35px] py-[13px] pr-[79px] gap-[10px] flex">
           {/*logo*/}
           <h3 className="w-[108px] h-[32px] top-[13px] gap-0 font-mon text-[24px] font-bold leading-[32px] tracking-[0.1px] text-left">
-            Bandage
+            CasaEncanto
           </h3>
         </div>
 
