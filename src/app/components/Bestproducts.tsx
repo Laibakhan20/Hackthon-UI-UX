@@ -1,8 +1,35 @@
+"use client";
+import { Product } from "@/interface";
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
+import { eightProducts } from "@/sanity/lib/queries";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Bestproducts = () => {
+
+    const [product, setProduct] = useState<Product[]>([])
+    const [loading, setLoading] = useState(true);
+  
+  
+    useEffect(()=>{
+      async function fetchproducts(){
+        try {
+        const fetchedproduct : Product[] = await client.fetch(eightProducts)
+        setProduct(fetchedproduct)
+      }
+      catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+      fetchproducts();
+    },[])
+  
+    if (loading) return <p>Loading products...</p>;
+    
   return (
     <div className="w-[414px] h-[5510px] px-[43px] gap-0 bg-white laptop:w-[1440px] laptop:h-[1652px] laptop:px-[121px] ">
       {/*container*/}
@@ -22,32 +49,40 @@ const Bestproducts = () => {
         </div>
 
         {/*row 2 products*/}
-        <div className="w-[328px] h-[2550px] laptop:w-[1049px] laptop:h-[615px] gap-[30px] flex laptop:flex-row xsmobile:flex-col ">
+        <div className=" w-[328px] h-full laptop:w-[1049px] laptop:h-full gap-[30px] laptop:flex-row xsmobile:flex-col grid grid-cols-1 laptop:grid-cols-4 laptop:grid-rows-2 ">
+        {product.map((product) => (
+                <div key={product._id} className="">
+                  
+                  <Link href={`/product/${product.slug?.current || ""}`}>
           {/*col 1*/}
-          <div className="w-[328px] laptop:w-[238px] h-[615px] gap-0 flex  flex-col">
+          <div className="w-[328px] laptop:w-[238px] h-full gap-0 flex  flex-col">
+          {product.productImage && (
             <Image
-              src={"/product-cover-5.png"}
-              alt="image"
+              src={urlFor(product.productImage).url()}
+              alt={product.title}
               height={427}
               width={239}
-              className="w-[328px] laptop:w-[239px] h-[427px] object-contain object-center"
+              className="w-[328px] laptop:w-[239px] h-[427px] object-fill object-center"
             />
+            )}
             <div className="w-[328px] laptop:w-[239px] h-[188px] p-[25px] pb-[35px] flex flex-col gap-[10px]  mx-auto justify-center items-center">
               <h5 className="w-[131px] h-[24px] flex items-center justify-center text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center font-mon text-mynav">
-                Graphic Design
+                {product.title}
               </h5>
               <Link
                 href={"/"}
                 className="text-mytextgray w-[146px] h-[24px] flex items-center justify-center text-[14px] font-[700] leading-[24px] tracking-[0.2px] text-center font-mon hover:underline underline-offset-[4px]"
               >
-                English Department
+                Home
               </Link>
               <span className="inline-flex w-[108px] h-[34px] py-[5px] px-[3px] gap-[5px]">
-                <h5 className="w-[52px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#BDBDBD] font-mon">
-                  $16.48
+              {product.dicountPercentage !== undefined && (
+                <h5 className="w-[52px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#BDBDBD] font-mon line-through">
+                ${(product.price / (1 - (product.dicountPercentage) / 100)).toFixed(2)}
                 </h5>
+              )}
                 <h5 className="w-[45px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#23856D] font-[Montserrat]">
-                  $6.48
+                ${product.price}
                 </h5>
               </span>
               <span className="inline-flex items-center w-auto h-[16px] gap-[6.08px]">
@@ -57,260 +92,17 @@ const Bestproducts = () => {
                 <div className="w-[16px] h-[16px] gap-0 bg-[#252B42] rounded-full"></div>
               </span>
             </div>
+
           </div>
-          {/*col 2*/}
-          <div className="w-[328px] laptop:w-[241px] h-[615px] gap-0 flex  flex-col bg-white">
-            <Image
-              src={"/product-cover-5 (1).png"}
-              alt="image"
-              height={427}
-              width={239}
-              className="w-[328px] laptop:w-[239px] h-[427px] object-contain object-center"
-            />
-            <div className="w-[328px] laptop:w-[239px] h-[188px] p-[25px] pb-[35px] flex flex-col gap-[10px]  mx-auto justify-center items-center">
-              <h5 className="w-[131px] h-[24px] flex items-center justify-center text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center font-mon text-mynav">
-                Graphic Design
-              </h5>
-              <Link
-                href={"/"}
-                className="text-mytextgray w-[146px] h-[24px] flex items-center justify-center text-[14px] font-[700] leading-[24px] tracking-[0.2px] text-center font-mon hover:underline underline-offset-[4px]"
-              >
-                English Department
-              </Link>
-              <span className="inline-flex w-[108px] h-[34px] py-[5px] px-[3px] gap-[5px]">
-                <h5 className="w-[52px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#BDBDBD] font-mon">
-                  $16.48
-                </h5>
-                <h5 className="w-[45px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#23856D] font-[Montserrat]">
-                  $6.48
-                </h5>
-              </span>
-              <span className="inline-flex items-center w-auto h-[16px] gap-[6.08px]">
-                <div className="w-[16px] h-[16px] gap-0 bg-myblue rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#23856D] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#E77C40] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#252B42] rounded-full"></div>
-              </span>
-            </div>
+          </Link>
+         
+
           </div>
-          {/*col 3*/}
-          <div className="w-[328px] laptop:w-[240px] h-[615px] gap-0 flex  flex-col bg-white">
-            <Image
-              src={"/product-cover-5 (2).png"}
-              alt="image"
-              height={427}
-              width={239}
-              className="w-[328px] laptop:w-[239px] h-[427px] object-contain object-center"
-            />
-            <div className="w-[328px] laptop:w-[239px] h-[188px] p-[25px] pb-[35px] flex flex-col gap-[10px]  mx-auto justify-center items-center">
-              <h5 className="w-[131px] h-[24px] flex items-center justify-center text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center font-mon text-mynav">
-                Graphic Design
-              </h5>
-              <Link
-                href={"/"}
-                className="text-mytextgray w-[146px] h-[24px] flex items-center justify-center text-[14px] font-[700] leading-[24px] tracking-[0.2px] text-center font-mon hover:underline underline-offset-[4px]"
-              >
-                English Department
-              </Link>
-              <span className="inline-flex w-[108px] h-[34px] py-[5px] px-[3px] gap-[5px]">
-                <h5 className="w-[52px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#BDBDBD] font-mon">
-                  $16.48
-                </h5>
-                <h5 className="w-[45px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#23856D] font-[Montserrat]">
-                  $6.48
-                </h5>
-              </span>
-              <span className="inline-flex items-center w-auto h-[16px] gap-[6.08px]">
-                <div className="w-[16px] h-[16px] gap-0 bg-myblue rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#23856D] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#E77C40] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#252B42] rounded-full"></div>
-              </span>
-            </div>
-          </div>
-          {/*col 4*/}
-          <div className="w-[328px] laptop:w-[240px] h-[615px] gap-0 flex  flex-col ">
-            <Image
-              src={"/product-cover-5 (3).png"}
-              alt="image"
-              height={427}
-              width={239}
-              className="w-[328px] laptop:w-[239px] h-[427px] object-contain object-center"
-            />
-            <div className="w-[328px] laptop:w-[239px] h-[188px] p-[25px] pb-[35px] flex flex-col gap-[10px]  mx-auto justify-center items-center">
-              <h5 className="w-[131px] h-[24px] flex items-center justify-center text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center font-mon text-mynav">
-                Graphic Design
-              </h5>
-              <Link
-                href={"/"}
-                className="text-mytextgray w-[146px] h-[24px] flex items-center justify-center text-[14px] font-[700] leading-[24px] tracking-[0.2px] text-center font-mon hover:underline underline-offset-[4px]"
-              >
-                English Department
-              </Link>
-              <span className="inline-flex w-[108px] h-[34px] py-[5px] px-[3px] gap-[5px]">
-                <h5 className="w-[52px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#BDBDBD] font-mon">
-                  $16.48
-                </h5>
-                <h5 className="w-[45px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#23856D] font-[Montserrat]">
-                  $6.48
-                </h5>
-              </span>
-              <span className="inline-flex items-center w-auto h-[16px] gap-[6.08px]">
-                <div className="w-[16px] h-[16px] gap-0 bg-myblue rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#23856D] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#E77C40] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#252B42] rounded-full"></div>
-              </span>
-            </div>
-          </div>
+          ))}
+          
         </div>
 
-        {/*row 3 products*/}
-        <div className="w-[328px] h-[2550px] laptop:w-[1049px] laptop:h-[615px] gap-[30px] flex laptop:flex-row xsmobile:flex-col ">
-          {/*col 1*/}
-          <div className="w-[328px] laptop:w-[238px] h-[615px] gap-0 flex  flex-col">
-            <Image
-              src={"/product-cover-5 (4).png"}
-              alt="image"
-              height={427}
-              width={239}
-              className="w-[328px] laptop:w-[239px] h-[427px] object-contain object-center"
-            />
-            <div className="w-[328px] laptop:w-[239px] h-[188px] p-[25px] pb-[35px] flex flex-col gap-[10px]  mx-auto justify-center items-center">
-              <h5 className="w-[131px] h-[24px] flex items-center justify-center text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center font-mon text-mynav">
-                Graphic Design
-              </h5>
-              <Link
-                href={"/"}
-                className="text-mytextgray w-[146px] h-[24px] flex items-center justify-center text-[14px] font-[700] leading-[24px] tracking-[0.2px] text-center font-mon hover:underline underline-offset-[4px]"
-              >
-                English Department
-              </Link>
-              <span className="inline-flex w-[108px] h-[34px] py-[5px] px-[3px] gap-[5px]">
-                <h5 className="w-[52px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#BDBDBD] font-mon">
-                  $16.48
-                </h5>
-                <h5 className="w-[45px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#23856D] font-[Montserrat]">
-                  $6.48
-                </h5>
-              </span>
-              <span className="inline-flex items-center w-auto h-[16px] gap-[6.08px]">
-                <div className="w-[16px] h-[16px] gap-0 bg-myblue rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#23856D] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#E77C40] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#252B42] rounded-full"></div>
-              </span>
-            </div>
-          </div>
-
-          {/*col 2*/}
-          <div className="w-[328px] laptop:w-[241px] h-[615px] gap-0 flex  flex-col bg-white">
-            <Image
-              src={"/product-cover-5 (5).png"}
-              alt="image"
-              height={427}
-              width={239}
-              className="w-[328px] laptop:w-[239px] h-[427px] object-contain object-center"
-            />
-            <div className="w-[328px] laptop:w-[239px] h-[188px] p-[25px] pb-[35px] flex flex-col gap-[10px]  mx-auto justify-center items-center">
-              <h5 className="w-[131px] h-[24px] flex items-center justify-center text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center font-mon text-mynav">
-                Graphic Design
-              </h5>
-              <Link
-                href={"/"}
-                className="text-mytextgray w-[146px] h-[24px] flex items-center justify-center text-[14px] font-[700] leading-[24px] tracking-[0.2px] text-center font-mon hover:underline underline-offset-[4px]"
-              >
-                English Department
-              </Link>
-              <span className="inline-flex w-[108px] h-[34px] py-[5px] px-[3px] gap-[5px]">
-                <h5 className="w-[52px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#BDBDBD] font-mon">
-                  $16.48
-                </h5>
-                <h5 className="w-[45px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#23856D] font-[Montserrat]">
-                  $6.48
-                </h5>
-              </span>
-              <span className="inline-flex items-center w-auto h-[16px] gap-[6.08px]">
-                <div className="w-[16px] h-[16px] gap-0 bg-myblue rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#23856D] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#E77C40] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#252B42] rounded-full"></div>
-              </span>
-            </div>
-          </div>
-
-          {/*col 3*/}
-          <div className="w-[328px] laptop:w-[240px] h-[615px] gap-0 flex  flex-col bg-white">
-            <Image
-              src={"/product-cover-5 (6).png"}
-              alt="image"
-              height={427}
-              width={239}
-              className="w-[328px] laptop:w-[239px] h-[427px] object-contain object-center"
-            />
-            <div className="w-[328px] laptop:w-[239px] h-[188px] p-[25px] pb-[35px] flex flex-col gap-[10px]  mx-auto justify-center items-center">
-              <h5 className="w-[131px] h-[24px] flex items-center justify-center text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center font-mon text-mynav">
-                Graphic Design
-              </h5>
-              <Link
-                href={"/"}
-                className="text-mytextgray w-[146px] h-[24px] flex items-center justify-center text-[14px] font-[700] leading-[24px] tracking-[0.2px] text-center font-mon hover:underline underline-offset-[4px]"
-              >
-                English Department
-              </Link>
-              <span className="inline-flex w-[108px] h-[34px] py-[5px] px-[3px] gap-[5px]">
-                <h5 className="w-[52px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#BDBDBD] font-mon">
-                  $16.48
-                </h5>
-                <h5 className="w-[45px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#23856D] font-[Montserrat]">
-                  $6.48
-                </h5>
-              </span>
-              <span className="inline-flex items-center w-auto h-[16px] gap-[6.08px]">
-                <div className="w-[16px] h-[16px] gap-0 bg-myblue rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#23856D] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#E77C40] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#252B42] rounded-full"></div>
-              </span>
-            </div>
-          </div>
-
-          {/*col 4*/}
-          <div className="w-[328px] laptop:w-[240px] h-[615px] gap-0 flex  flex-col ">
-            <Image
-              src={"/product-cover-5 (7).png"}
-              alt="image"
-              height={427}
-              width={239}
-              className="w-[328px] laptop:w-[239px] h-[427px] object-contain object-center"
-            />
-            <div className="w-[328px] laptop:w-[239px] h-[188px] p-[25px] pb-[35px] flex flex-col gap-[10px]  mx-auto justify-center items-center">
-              <h5 className="w-[131px] h-[24px] flex items-center justify-center text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center font-mon text-mynav">
-                Graphic Design
-              </h5>
-              <Link
-                href={"/"}
-                className="text-mytextgray w-[146px] h-[24px] flex items-center justify-center text-[14px] font-[700] leading-[24px] tracking-[0.2px] text-center font-mon hover:underline underline-offset-[4px]"
-              >
-                English Department
-              </Link>
-              <span className="inline-flex w-[108px] h-[34px] py-[5px] px-[3px] gap-[5px]">
-                <h5 className="w-[52px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#BDBDBD] font-mon">
-                  $16.48
-                </h5>
-                <h5 className="w-[45px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#23856D] font-[Montserrat]">
-                  $6.48
-                </h5>
-              </span>
-              <span className="inline-flex items-center w-auto h-[16px] gap-[6.08px]">
-                <div className="w-[16px] h-[16px] gap-0 bg-myblue rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#23856D] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#E77C40] rounded-full"></div>
-                <div className="w-[16px] h-[16px] gap-0 bg-[#252B42] rounded-full"></div>
-              </span>
-            </div>
-          </div>
-        </div>
+       
       </div>
     </div>
   );

@@ -20,7 +20,7 @@ const Navbar = () => {
     setMenuOpen(!menuOpen);
   };
   return (
-    <div className=" w-[414px] h-[58px] top-[70px] laptop:w-full  desktop:w-[1437px] laptop:px-[25px] laptop:py-0 laptop:gap-[324px] laptop:left-[10px] bg-white  mx-auto justify-center items-center flex pt-[30px]  px-[30px] ">
+    <div className=" w-[414px] h-[58px] top-[70px] laptop:w-[1437px] laptop:px-[25px] laptop:py-0 laptop:gap-[324px] laptop:left-[10px] bg-white  mx-auto justify-center items-center flex pt-[30px]  px-[30px]">
       {/*for desktop ////////////////////////////*/}
       <div className="container laptop:flex xsmobile:hidden flex-row mx-auto">
         {/*logo*/}

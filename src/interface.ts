@@ -13,6 +13,12 @@ export interface Product {
     dicountPercentage? : number ;
     isNew : boolean ;
     isAvailable : boolean ;
+    slug : {
+        _type : "slug" ;
+        current : string ;
+    }
 
 
 }
+
+

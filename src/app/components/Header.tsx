@@ -43,9 +43,9 @@ const Header = () => {
             <Image 
           src={urlFor(product.productImage).url()}
           alt={product.title}
-          layout="fill"  // Makes the image cover the full container
-          objectFit="cover"  // Ensures the image covers the area completely
-          className="object-contain object-center laptop:w-full desktop:w-[1440px] h-[716px]  mx-auto"
+          width={1440}
+          height={716}
+          className="object-fill object-center laptop:w-[1440px] h-[716px]  mx-auto"
           />
         )}
         {/* Dark Overlay */}
