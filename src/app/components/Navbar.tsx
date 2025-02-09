@@ -12,6 +12,7 @@ import { ChevronDown, Heart, Search, User } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { BiMenuAltRight } from "react-icons/bi";
+import SearchBar from "./Search";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,7 +21,7 @@ const Navbar = () => {
     setMenuOpen(!menuOpen);
   };
   return (
-    <div className=" w-[414px] h-[58px] top-[70px] laptop:w-[1437px] laptop:px-[25px] laptop:py-0 laptop:gap-[324px] laptop:left-[10px] bg-white  mx-auto justify-center items-center flex pt-[30px]  px-[30px]">
+    <div className=" xsmobile:w-[320px] mobile:w-[414px] h-[58px] top-[70px] laptop:w-[1437px] laptop:px-[25px] laptop:py-0 laptop:gap-[324px] laptop:left-[10px] bg-white  mx-auto justify-center items-center flex pt-[30px]">
       {/*for desktop ////////////////////////////*/}
       <div className="container laptop:flex xsmobile:hidden flex-row mx-auto">
         {/*logo*/}
@@ -92,7 +93,7 @@ const Navbar = () => {
               </Link>
             </div>
             <div className="w-[46px] h-[46px] gap-0 flex justify-center items-center">
-              <Search color="#23A6F0" className="w-[16px] h-[16px]" />
+              <SearchBar />
             </div>
             <div className="w-[46px] h-[46px] gap-0 flex justify-center items-center ">
               <Link
@@ -131,7 +132,7 @@ const Navbar = () => {
         </div>
 
         {/*icons*/}
-        <div className="justify-between flex w-[227px] px-[30px]">
+        <div className="justify-between flex w-[227px]">
           <Search color="#252B42" className="w-[24px] h-[24px] " />
 
           <Link href={"/cart"}>

@@ -79,7 +79,7 @@ const Header = () => {
         </div>
       </div>
 
-      {/*mobie hero section*/}
+      {/*mobile hero section*/}
       <div
         className="xsmobile:flex laptop:hidden relative w-[414px] h-[753px] rounded-[5px] border border-solid"
       >

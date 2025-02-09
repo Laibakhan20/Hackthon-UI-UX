@@ -20,7 +20,6 @@ export const product = defineType({
                 maxLength: 96
 
             }
-
         },
         {
             name:"description",
@@ -57,9 +56,11 @@ export const product = defineType({
             title:"New Badge",
         },
         {
-            name:"isAvailable",
-            type:"boolean",
-            title:"Available",
-        }
+            name: "isAvailable",
+            title: "Available",
+            type: "boolean",
+            description: "Mark if the product is available for purchase",
+          },
+      
     ]
 })

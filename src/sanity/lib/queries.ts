@@ -8,6 +8,8 @@ export const heroImage = groq`*[_type == "heroimg"]`;
 
 export const fourcategory = groq`*[_type == "category"]`;
 
+export const bestseller = groq`*[_type == "product"][8...16]`;
+
 
 
 

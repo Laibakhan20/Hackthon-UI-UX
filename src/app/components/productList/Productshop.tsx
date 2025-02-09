@@ -238,6 +238,7 @@ const Productshop = () => {
           <div className="grid laptop:grid-rows laptop:grid-cols-4 xsmobile:grid-rows grid-cols-1 w-[328px] h-full gap-[30px] laptop:w-[1124px] laptop:h-full ">
             {product.map((product) => (
               <div key={product._id} className="w-[328px] h-full">
+                <Link href={`/product/${product.slug?.current || ""}`}>
               {/*card*/}
             <div className="w-[328px] h-[615px] laptop:w-[239px] laptop:h-[488px] bg-white hover:bg-slate-200">
               {product.productImage && (
@@ -274,6 +275,7 @@ const Productshop = () => {
               </span>
               </div>
             </div>
+            </Link>
 
             </div>
             ))}

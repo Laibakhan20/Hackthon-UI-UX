@@ -4,9 +4,9 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className='w-[414px] h-[1342px] gap-[40px] laptop:w-[1440px] laptop:h-[488px] laptop:gap-[40px] bg-white'>
+    <div className='xsmobile:w-[320px] mobile:w-[414px] h-[1342px] gap-[40px] laptop:w-[1440px] laptop:h-[488px] laptop:gap-[40px] bg-white'>
         {/*1 row*/}
-        <div className='w-[414px] h-[173px] px-[45px] py-0 pb-0 gap-[40px] laptop:w-[1440px] laptop:h-[142px] laptop:px-[195px] laptop:py-[4px] laptop:pb-[4px] bg-mywhite items-center justify-center flex'>
+        <div className='xsmobile:w-[320px] mobile:w-[414px] h-[173px] px-[45px] py-0 pb-0 gap-[40px] laptop:w-[1440px] laptop:h-[142px] laptop:px-[195px] laptop:py-[4px] laptop:pb-[4px] bg-mywhite items-center justify-center flex'>
             {/*container*/}
             <div className='w-[325px] h-auto px-0 py-[40px] gap-0 laptop:w-[1050px] laptop:h-auto laptop:px-0 laptop:py-[40px] laptop:gap-0  laptop:left-[195px] left-[44px]  mx-auto items-center justify-center flex'>
                 {/*row*/}
@@ -32,7 +32,7 @@ const Footer = () => {
         </div>
         <hr className='w-[1057px]  top-[138px] left-[195px] gap-[0px] border h-0 border-t border-solid border-[#E6E6E6] text-center mx-auto xsmobile:hidden laptop:flex'/>
         {/*row 2*/}
-        <div className=' w-[414px] h-[1071px] top-[173px] px-[47px] py-0 gap-[40px] laptop:w-[1440px] laptop:h-[272px] laptop:top-[142px] laptop:px-[195px] laptop:pb-[2px] bg-white flex '>
+        <div className='xsmobile:w-[320px] mobile:w-[414px] h-[1071px] top-[173px] px-[47px] py-0 gap-[40px] laptop:w-[1440px] laptop:h-[272px] laptop:top-[142px] laptop:px-[195px] laptop:pb-[2px] bg-white flex '>
 
 
         <div className="container px-0 py-[50px] mx-auto ">
@@ -118,12 +118,12 @@ const Footer = () => {
       </nav>
     </div>
 
-    <div className="w-[321px] h-[131px] px-4 gap-[20px]">
+    <div className="xsmobile:w-[300px] mobile:w-[321px] h-[131px] px-4 gap-[20px]">
       <h5 className="title-font font-bold text-mynav tracking-widest text-base mb-3 font-mon">
       Get In Touch
       </h5>
       <div className="flex xl:flex-nowrap md:flex-nowrap lg:flex-wrap flex-wrap justify-center items-end md:justify-start gap-0">
-        <div className="relative w-[321px]  xl:mr-4 lg:mr-0 sm:mr-4 mr-2 flex">
+        <div className="relative w-[321px]  xl:mr-4 lg:mr-0 sm:mr-4 mr-2 flex xsmobile:flex-col">
           
           <input
             type="text"
@@ -155,12 +155,12 @@ const Footer = () => {
         </div>
 
         {/*row 3*/}
-        <div className='laptop:w-[1440px] laptop:h-[74px] laptop:top-[414px] laptop:px-[195px] flex bg-mywhite w-[414px] h-[98px] top-[1244px] gap-[40px]'>
+        <div className='laptop:w-[1440px] laptop:h-[74px] laptop:top-[414px] laptop:px-[195px] flex bg-mywhite xsmobile:w-[320px] mobile:w-[414px] h-[98px] top-[1244px] gap-[40px]'>
             {/*container*/}
-            <div className='w-[414px] h-[98px] py-[25px] gap-[40px] laptop:w-[1050px] laptop:h-[74px] laptop:left-[195px] laptop:py-[25px] laptop:gap-0 mx-auto'>
+            <div className='xsmobile:w-[320px] mobile:w-[414px] h-[98px] py-[25px] gap-[40px] laptop:w-[1050px] laptop:h-[74px] laptop:left-[195px] laptop:py-[25px] laptop:gap-0 mx-auto flex justify-center'>
                 {/*row*/}
-                <div className='w-[413px] h-[48px] gap-[213px] laptop:w-[600px] laptop:h-[24px] flex'>
-                    <h6 className='xsmobile:mx-auto laptop:mx-0 flex font-mon text-[14px] leading-[24px] tracking-[0.2px] font-bold xsmobile:text-center laptop:text-left text-mytextgray'>Developed By<br className='xsmobile:flex laptop:hidden'/> Laiba Khan. All Rights Reserved </h6>
+                <div className='w-[413px] h-[48px] gap-[213px] laptop:w-[600px] laptop:h-[24px] flex '>
+                    <h6 className='xsmobile:mx-auto laptop:mx-0 flex font-mon text-[14px] leading-[24px] tracking-[0.2px] font-bold xsmobile:text-center laptop:text-left text-mytextgray mx-auto'>Developed By<br className='xsmobile:flex laptop:hidden'/> Laiba Khan. All Rights Reserved </h6>
                 </div>
             </div>
         </div>
