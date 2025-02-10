@@ -26,12 +26,16 @@ import { Product } from "@/interface";
 import { allProducts } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
+import { useDispatch } from "react-redux";
+import { add } from "@/app/redux/cartslice";
 
 
-const Productshop = () => {
+const Productshop: React.FC = () => {
 
   const [product, setProduct] = useState<Product[]>([])
   const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+
 
 
   useEffect(()=>{
@@ -50,6 +54,13 @@ const Productshop = () => {
   },[])
 
   if (loading) return <p>Loading products...</p>;
+
+  
+  // Handle "Add to Cart"
+  const handleAdd = (product: Product) => {
+    dispatch(add(product));
+    alert(`${product.title} added to cart!`); // Optional: Show feedback
+  }
 
 
 
@@ -240,7 +251,7 @@ const Productshop = () => {
               <div key={product._id} className="w-[328px] h-full">
                 <Link href={`/product/${product.slug?.current || ""}`}>
               {/*card*/}
-            <div className="w-[328px] h-[615px] laptop:w-[239px] laptop:h-[488px] bg-white hover:bg-slate-200">
+            <div className="w-[328px] h-full laptop:w-[239px]  bg-white hover:bg-slate-200">
               {product.productImage && (
                 <Image 
                 src={urlFor(product.productImage).url()} 
@@ -251,12 +262,12 @@ const Productshop = () => {
                 />
               )}
           
-              <div className="w-[328px] laptop:w-[239px] h-[188px] pt-[25px] pb-[35px] px-[25px] gap-[8px] items-center justify-center flex flex-col">
+              <div className="w-[328px] laptop:w-[239px] h-[188px] pt-[25px] pb-[35px] px-[25px] gap-[2px] items-center justify-center flex flex-col">
                 <h5 className="text-sm leading-6 text-mynav font-mon font-bold text-center tracking-widest">
                   {product.title}
                 </h5>
                 <p className="text-sm leading-6 text-mytextgray font-mon font-bold text-center tracking-widest">Home</p>
-                <p className="text-red-500 font-semibold font-mon text-sm">{product.dicountPercentage}% off</p>
+                <p className="text-red-500 font-semibold font-mon text-sm bg-mywhite">{product.dicountPercentage}% off</p>
                 <span className="inline-flex w-[108px] h-[34px] py-[5px] px-[3px] gap-[6px] items-center justify-center">
                 {product.dicountPercentage !== undefined && (
                 <h5 className="w-[52px] h-[24px] text-[16px] font-[700] leading-[24px] tracking-[0.1px] text-center text-[#BDBDBD] font-mon line-through">
@@ -273,6 +284,9 @@ const Productshop = () => {
                 <div className="w-[16px] h-[16px] gap-0 bg-[#E77C40] rounded-full"></div>
                 <div className="w-[16px] h-[16px] gap-0 bg-[#252B42] rounded-full"></div>
               </span>
+              <Button onClick={()=>handleAdd(product)} className="w-full h-full text-white bg-myblue font-mon mt-1">
+                Add to Cart
+              </Button>
               </div>
             </div>
             </Link>

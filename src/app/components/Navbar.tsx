@@ -1,20 +1,18 @@
 "use client";
 import Link from "next/link";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { ChevronDown, Heart, Search, User } from "lucide-react";
-import Image from "next/image";
+import { Heart, Search, User } from "lucide-react";
 import { useState } from "react";
 import { BiMenuAltRight } from "react-icons/bi";
 import SearchBar from "./Search";
+import { RootState } from "../redux/store"; 
+import { useSelector } from "react-redux";
+import { BsCart } from "react-icons/bs";
 
-const Navbar = () => {
+
+const Navbar: React.FC  = () => {
+  
+  const item = useSelector((state: RootState) => state.cart);
+
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -41,25 +39,14 @@ const Navbar = () => {
               Home
             </Link>
             <div className="flex">
-              <DropdownMenu>
-                <DropdownMenuTrigger className="w-[63px] h-[25px] flex items-center focus:outline-none">
+            
                   <Link
-                    href={"/"}
+                    href={"/Shop"}
                     className="w-[38px] h-[28px] top-[-1px] left-[6px] gap-0 font-montserrat text-[14px] font-medium leading-[28px] tracking-[0.2px] text-left"
                   >
                     Shop
                   </Link>
-                  <ChevronDown className="w-[10px] h-[15px] mr-[6px] text-mynav" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DropdownMenuLabel>Categories</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>Eastern</DropdownMenuItem>
-                  <DropdownMenuItem>Western</DropdownMenuItem>
-                  <DropdownMenuItem>Outer Wear</DropdownMenuItem>
-                  <DropdownMenuItem>Households</DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+                 
             </div>
             <Link
               href={"/about"}
@@ -97,26 +84,17 @@ const Navbar = () => {
             </div>
             <div className="w-[46px] h-[46px] gap-0 flex justify-center items-center ">
               <Link
-                href={"/"}
-                className="w-[56px] h-[46px] p-[15px] gap-[5px] rounded-[37px] flex justify-center items-center"
+                href={"/Cart"}
+                className="w-[56px] h-[46px] p-[15px] gap-[5px] rounded-[37px] flex justify-center items-center text-myblue"
               >
-                <Image
-                  src={"/Vector (3).png"}
-                  alt="cart"
-                  height={15}
-                  width={15}
-                  className="w-[15px] h-[15px] object-contain object-center"
+                <BsCart color="#23A6F0" className="w-[24px] h-[24px] "
                 />
-                <p className="text-myblue font-mon text-[12px] font-normal leading-[16px] tracking-[0.2px] text-center">
-                  1
-                </p>
-              </Link>
+                {item.length}
+              </Link> 
             </div>
             <div className="w-[56px] h-[46px] p-[15px] gap-[5px] rounded-[37px] flex justify-center items-center">
               <Heart color="#23A6F0" className="w-[16px] h-[15px]" />
-              <p className="text-myblue font-mon text-[12px] font-normal leading-[16px] tracking-[0.2px] text-center">
-                1
-              </p>
+             
             </div>
           </div>
         </div>
@@ -135,15 +113,14 @@ const Navbar = () => {
         <div className="justify-between flex w-[227px]">
           <Search color="#252B42" className="w-[24px] h-[24px] " />
 
-          <Link href={"/cart"}>
-            <Image
-              src={"/cart.png"}
-              alt={"cart"}
-              height={22}
-              width={24}
-              className="w-[24px] h-[22.4px]"
-            />
-          </Link>
+          <Link
+                href={"/Cart"}
+                className="flex"
+              >
+                <BsCart color="#252B42" className="w-[24px] h-[26px] "
+                />
+                {item.length}
+              </Link> 
 
           <button  className="bg-transparent w-[24px] h-[26px]" onClick={toggleMenu}
           aria-label="Toggle Menu">
@@ -190,4 +167,15 @@ const Navbar = () => {
 
 export default Navbar;
 
-
+{/*  <DropdownMenu>
+                <DropdownMenuTrigger className="w-[63px] h-[25px] flex items-center focus:outline-none"> <ChevronDown className="w-[10px] h-[15px] mr-[6px] text-mynav" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuLabel>Categories</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>Eastern</DropdownMenuItem>
+                  <DropdownMenuItem>Western</DropdownMenuItem>
+                  <DropdownMenuItem>Outer Wear</DropdownMenuItem>
+                  <DropdownMenuItem>Households</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu> */}

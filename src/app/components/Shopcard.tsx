@@ -83,7 +83,7 @@ const Shopcard = () => {
         {/*mobile //////////////////////*/}
 
         {/*container*/}
-        <div className='xsmobile:flex laptop:hidden flex-col w-[333px] h-full left-[40.5px] px-0 py-[80px] gap-[48px] '>
+        <div className='relative z-10 xsmobile:flex laptop:hidden flex-col mt-96 w-full h-auto px-4 py-20 gap-12'>
             {/*row 1*/}
             <div className='w-[333px] h-[82px] gap-0 justify-center flex items-center mx-auto flex-col'>
                 <h3 className='text-mynav w-[181px] h-[32px] gap-0 font-mon text-[24px] font-bold leading-[32px] tracking-[0.1px] text-left'>EDITOR&apos;S PICK</h3>
@@ -95,21 +95,21 @@ const Shopcard = () => {
             {product.map((product) => (
                 <div key={product._id} className="">
             {/*row 2*/}
-            <div className='flex flex-col w-[325px] h-full gap-[30px]'>
+            <div className='flex flex-col w-[325px] h-auto gap-[30px]'>
                 {/*col 1*/}
                 
-                <div className='w-[324px] h-[500px] gap-0 bg-contain bg-center bg-no-repeat' >
+                <div className='relative w-[324px] h-[500px] gap-0' >
                 {product.productImage && (
                     <Image 
                     src={urlFor(product.productImage).url()}
                     alt="image"
                     width={324}
                     height={500}
-                    className='absolute object-fill object-center w-[324px] h-[500px]'
+                    className=' object-fill object-center w-[324px] h-[500px]'
                     />
                 )}
-                <Button className='relative rounded-none w-[170px] h-[48px] top-[426px] left-[31px] py-[12px] gap-[17px] bg-white'>
-                    <h5 className='text-mynav w-[40px] h-[24px] top-[12px] left-[64px] gap-0 font-mon text-[16px] font-bold leading-[24px] tracking-[0.1px] text-center'>{product.title}</h5>
+                <Button className='absolute rounded-none w-[170px] h-[48px] top-[426px] left-6 py-[12px] bg-white'>
+                    <h5 className='text-mynav top-[12px] font-mon text-[16px] font-bold leading-[24px] tracking-[0.1px] text-center mx-auto'>{product.title}</h5>
                 </Button>
                 </div>
                 

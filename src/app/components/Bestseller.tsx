@@ -5,7 +5,6 @@ import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
 import { bestseller } from '@/sanity/lib/queries';
 import { ShoppingBag } from 'lucide-react';
-import { Princess_Sofia } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'

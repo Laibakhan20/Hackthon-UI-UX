@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Montserrat } from 'next/font/google'
+import ReduxProvider from "./components/Reduxprovider";
+
 
 const montserrat = Montserrat({
   weight: '400',
@@ -36,8 +38,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        
+      <ReduxProvider>
         {children}
+        </ReduxProvider>
+        
         
       </body>
     </html>

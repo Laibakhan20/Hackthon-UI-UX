@@ -4,10 +4,23 @@ import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+
+interface searchResult {
+  _id: string;
+  title: string;
+  slug : {
+    _type : "slug" ;
+    current : string ;
+}
+  price: number;
+  productImage : string ;
+}
+
+
 export default function SearchBar() {
   const [isOpen, setIsOpen] = useState(false); // Toggle search bar
   const [query, setQuery] = useState(""); // Search query
-  const [results, setResults] = useState<any[]>([]); // Search results
+  const [results, setResults] = useState<searchResult[]>([]); // Search results
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 

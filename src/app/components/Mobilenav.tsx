@@ -3,10 +3,13 @@ import Link from "next/link";
 import {  Heart, Search, User } from "lucide-react";
 import { useState } from "react";
 import { BiMenuAltRight } from "react-icons/bi";
+import { RootState } from "../redux/store"; // Replace with the actual path to your store's RootState type
+import { useSelector } from "react-redux";
 import { BsCart } from "react-icons/bs";
 
 
 const Mobilenav = () => {
+  const item = useSelector((state: RootState) => state.cart);
     const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -92,12 +95,10 @@ const Mobilenav = () => {
             <div className="w-[64px] h-[64px] gap-0 flex justify-center items-center ">
               <Link
                 href={"/"}
-                className="w-[64px] h-[64px] gap-[5px]  flex justify-center items-center"
+                className="w-[64px] h-[64px] gap-[5px]  flex justify-center items-center text-myblue"
               >
                 <BsCart className="w-[34px] h-[34px]" color="#23A6F0"/>
-                <p className="text-myblue font-mon text-[12px] font-normal leading-[16px] tracking-[0.2px] text-center">
-                  1
-                </p>
+               {item.length}
               </Link>
             </div>
             <div className="w-[64px] h-[64px] gap-[5px] rounded-[37px] flex justify-center items-center">

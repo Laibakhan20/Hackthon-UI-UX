@@ -31,7 +31,7 @@ const Bestproducts = () => {
     if (loading) return <p>Loading products...</p>;
     
   return (
-    <div className="w-[414px] h-[5510px] px-[43px] mt-36 laptop:mt-0 gap-0 bg-white laptop:w-[1440px] laptop:h-[1652px] laptop:px-[121px] ">
+    <div className="w-[414px] h-[5510px] px-[43px] mt-80 laptop:mt-0 gap-0 bg-white laptop:w-[1440px] laptop:h-[1652px] laptop:px-[121px] ">
       {/*container*/}
       <div className=" mx-auto py-[80px] gap-[48px] laptop:gap-[80px] w-[328px] laptop:w-[1124px] h-[5510px] laptop:h-[1652px] left-[43px] laptop:left-[195px] bg-white flex-col flex">
         {/*row 1 heading*/}
